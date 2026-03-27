@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EduLearn</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- ░░░ NAVBAR ░░░ -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo" onclick="showPage('home')">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+        <path d="M4 14L14 4L24 14L14 24L4 14Z" fill="url(#logoGrad)" opacity="0.9"/>
+        <path d="M9 14L14 9L19 14L14 19L9 14Z" fill="#fff"/>
+        <defs><linearGradient id="logoGrad" x1="4" y1="4" x2="24" y2="24">
+          <stop offset="0%" stop-color="#7C6EFA"/><stop offset="100%" stop-color="#4FACFE"/>
+        </linearGradient></defs>
+      </svg>
+      <span>EduLearn</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#" class="nav-link active" onclick="showPage('home')">Home</a></li>
+      <li><a href="#" class="nav-link" onclick="showPage('notes')">Notes</a></li>
+      <li><a href="#" class="nav-link" onclick="showPage('videos')">Learn for videos</a></li>
+      <li><a href="#" class="nav-link" onclick="showPage('pomodoro')">Focus Timer</a></li>
+      <li><a href="#" class="nav-link" onclick="showPage('streak')">Streaks</a></li>
+      <li><a href="#" class="nav-link" onclick="showPage('quiz')">Quiz</a></li>
+      <li class="has-dropdown">
+        <a href="#" class="nav-link">More <span class="caret">▾</span></a>
+        <div class="dropdown">
+          <a href="#" onclick="showPage('home'); scrollToSection('features')">Features</a>
+          <a href="#" onclick="showPage('home'); scrollToSection('pricing')">Pricing</a>
+          <a href="#" onclick="showPage('home'); scrollToSection('contact')">Contact</a>
+        </div>
+      </li>
+    </ul>
+    <div class="nav-right">
+      <a href="#" class="nav-cart" onclick="showPage('notes')">MY NOTES</a>
+      <a href="#" class="btn-nav" onclick="openRegisterModal(event)">JOIN FOR FREE</a>
+    </div>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#" class="mob-link" onclick="showPage('home');closeMobile()">Home</a>
+  <a href="#" class="mob-link" onclick="showPage('notes');closeMobile()">Notes Library</a>
+  <a href="#" class="mob-link" onclick="showPage('videos');closeMobile()">Learn Videos</a>
+  <a href="#" class="mob-link" onclick="showPage('pomodoro');closeMobile()">Focus Timer</a>
+  <a href="#" class="mob-link" onclick="showPage('home');scrollToSection('pricing');closeMobile()">Pricing</a>
+  <a href="#" class="btn-nav mob-cta" onclick="openRegisterModal(event)">JOIN FOR FREE</a>
+</div>
+
+<!-- ====================================================
+     PAGE: HOME
+===================================================== -->
+<div id="page-home" class="page-wrapper active">
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg">
+    <canvas id="particleCanvas"></canvas>
+    <div class="hero-orb orb1"></div>
+    <div class="hero-orb orb2"></div>
+    <div class="grid-overlay"></div>
+  </div>
+  <div class="hero-content">
+    <h1 class="hero-title hero-title-anim">
+      Study Smarter,<br/>
+      <span class="title-gradient">Not Harder.</span>
+    </h1>
+    <p class="hero-desc hero-desc-anim">
+      <span id="heroTypewriter"></span><span class="type-cursor">|</span>
+    </p>
+    <div class="hero-btns hero-btns-anim">
+      <a href="#" class="btn-primary" onclick="openRegisterModal(event)">JOIN FOR FREE</a>
+      <a href="#" class="btn-outline" onclick="showPage('notes')">BROWSE NOTES</a>
+    </div>
+    <div class="hero-stats hero-stats-anim">
+      <div class="stat"><span class="stat-num">50K+</span><span class="stat-lbl">Active students</span></div>
+      <div class="stat-div"></div>
+      <div class="stat"><span class="stat-num">12K+</span><span class="stat-lbl">Notes shared</span></div>
+      <div class="stat-div"></div>
+      <div class="stat"><span class="stat-num">300+</span><span class="stat-lbl">Video lessons</span></div>
+      <div class="stat-div"></div>
+      <div class="stat"><span class="stat-num">98%</span><span class="stat-lbl">Pass rate</span></div>
+    </div>
+  </div>
+  <!-- Hero Mockup — study dashboard -->
+  <div class="hero-mockup hero-mockup-anim">
+    <div class="mockup-frame">
+      <div class="mockup-bar">
+        <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+        <span class="mockup-url">edulearn.app/dashboard</span>
+      </div>
+      <div class="mockup-body">
+        <div class="dash-sidebar">
+          <div class="ds-logo">📚</div>
+          <div class="ds-item active" title="Dashboard">⊞</div>
+          <div class="ds-item" title="Notes">📄</div>
+          <div class="ds-item" title="Videos">▶</div>
+          <div class="ds-item" title="Timer">⏱</div>
+          <div class="ds-item" title="Profile">◉</div>
+        </div>
+        <div class="dash-content">
+          <div class="dash-header">
+            <span class="dash-title">📊 Study Progress This Week</span>
+            <div class="dash-tabs">
+              <span class="dtab active">Weekly</span>
+              <span class="dtab">Monthly</span>
+            </div>
+          </div>
+          <div class="dash-chart">
+            <div class="chart-bars" id="chartBars"></div>
+            <div class="chart-line-wrap">
+              <svg viewBox="0 0 300 80" preserveAspectRatio="none" class="chart-svg">
+                <defs>
+                  <linearGradient id="lineGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#7C6EFA" stop-opacity="0.6"/>
+                    <stop offset="100%" stop-color="#7C6EFA" stop-opacity="0"/>
+                  </linearGradient>
+                </defs>
+                <path d="M0,65 C40,55 60,25 100,30 C140,35 160,60 200,35 C240,10 270,40 300,22" stroke="#7C6EFA" stroke-width="2" fill="none"/>
+                <path d="M0,65 C40,55 60,25 100,30 C140,35 160,60 200,35 C240,10 270,40 300,22 L300,80 L0,80 Z" fill="url(#lineGrad)"/>
+                <circle cx="200" cy="35" r="4" fill="#7C6EFA"/>
+                <rect x="170" y="10" width="70" height="20" rx="4" fill="#7C6EFA"/>
+                <text x="205" y="24" text-anchor="middle" fill="#fff" font-size="8" font-family="Manrope">14 hrs studied</text>
+              </svg>
+            </div>
+          </div>
+          <div class="dash-metrics">
+            <div class="metric"><span class="m-val green">↑ 22%</span><span class="m-lbl">vs last week</span></div>
+            <div class="metric"><span class="m-val">🔥 7-day</span><span class="m-lbl">streak</span></div>
+            <div class="metric"><span class="m-val">12 Notes</span><span class="m-lbl">saved</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUSTED BY -->
+<section class="trusted">
+  <p class="trusted-label">Loved by students from top institutions</p>
+  <div class="trusted-logos">
+    <span>🏛 IIT Delhi</span>
+    <span>📚 DU Colleges</span>
+    <span>🎓 CBSE Grade 10–12</span>
+    <span>🔬 JEE Aspirants</span>
+    <span>🩺 NEET Prep</span>
+    <span>💻 CS Undergrads</span>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features section" id="features">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">WHAT WE OFFER</span>
+      <h2 class="section-title">Everything you need<br/><span class="title-gradient">to excel in studies</span></h2>
+      <p class="section-desc">Notes, videos, timers, and more — designed for students who are serious about their goals.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feat-card feat-card-link reveal" style="--delay:0s" onclick="showPage('notes')" role="link" tabindex="0">
+        <div class="feat-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="5" y="4" width="18" height="20" rx="2" stroke="url(#fg1)" stroke-width="1.5"/><path d="M9 10h10M9 14h10M9 18h6" stroke="url(#fg1)" stroke-width="1.5" stroke-linecap="round"/><defs><linearGradient id="fg1" x1="4" y1="4" x2="24" y2="24"><stop stop-color="#7C6EFA"/><stop offset="1" stop-color="#4FACFE"/></linearGradient></defs></svg>
+        </div>
+        <h3>Shared Notes Library</h3>
+        <p>Browse and download notes shared by students across all subjects — Maths, Physics, Chemistry, Biology and more. Filter by grade, topic or chapter.</p>
+        <a href="#" class="feat-link" onclick="showPage('notes')">Browse Notes →</a>
+      </div>
+      <div class="feat-card feat-card-link reveal" style="--delay:0.1s" onclick="showPage('pomodoro')" role="link" tabindex="0">
+        <div class="feat-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="10" stroke="url(#fg2)" stroke-width="1.5"/><path d="M14 8v6l4 2" stroke="url(#fg2)" stroke-width="1.5" stroke-linecap="round"/><defs><linearGradient id="fg2" x1="4" y1="4" x2="24" y2="24"><stop stop-color="#7C6EFA"/><stop offset="1" stop-color="#4FACFE"/></linearGradient></defs></svg>
+        </div>
+        <h3>Pomodoro Focus Timer</h3>
+        <p>Beat procrastination with our built-in Pomodoro timer. 25-minute focus sprints with short breaks to keep your brain sharp and motivated.</p>
+        <a href="#" class="feat-link" onclick="showPage('pomodoro')">Start Focusing →</a>
+      </div>
+      <div class="feat-card feat-card-link reveal" style="--delay:0.2s" onclick="showPage('videos')" role="link" tabindex="0">
+        <div class="feat-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M11 8l8 6-8 6V8z" stroke="url(#fg3)" stroke-width="1.5" stroke-linejoin="round"/><rect x="3" y="4" width="22" height="20" rx="3" stroke="url(#fg3)" stroke-width="1.5"/><defs><linearGradient id="fg3" x1="4" y1="4" x2="24" y2="24"><stop stop-color="#7C6EFA"/><stop offset="1" stop-color="#4FACFE"/></linearGradient></defs></svg>
+        </div>
+        <h3>Video Learning Hub</h3>
+        <p>Access curated YouTube lessons by subject, chapter and grade. Search any topic and watch the best educational videos from trusted channels.</p>
+        <a href="#" class="feat-link" onclick="showPage('videos')">Watch Lessons →</a>
+      </div>
+      <div class="feat-card feat-card-link reveal" style="--delay:0.3s" onclick="showPage('streak')" role="link" tabindex="0">
+        <div class="feat-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 4l2.5 7h7.5l-6 4.5 2.5 7L14 18l-6.5 4.5 2.5-7L4 11h7.5L14 4z" stroke="url(#fg4)" stroke-width="1.5" stroke-linejoin="round"/><defs><linearGradient id="fg4" x1="4" y1="4" x2="24" y2="24"><stop stop-color="#7C6EFA"/><stop offset="1" stop-color="#4FACFE"/></linearGradient></defs></svg>
+        </div>
+        <h3>Track Study Streaks</h3>
+        <p>Build consistency with daily study streaks. Earn badges, see your progress heatmap, and stay motivated with weekly goals and milestones.</p>
+        <a href="#" class="feat-link" onclick="showPage('streak')">View Streaks →</a>
+      </div>
+      <!-- Wide card -->
+      <div class="feat-card feat-card-link reveal large-feat" style="--delay:0.4s" onclick="showPage('notes')" role="link" tabindex="0">
+        <div class="large-feat-inner">
+          <div>
+            <div class="feat-icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M5 8h18M5 14h12M5 20h15" stroke="url(#fg5)" stroke-width="1.5" stroke-linecap="round"/><defs><linearGradient id="fg5" x1="4" y1="4" x2="24" y2="24"><stop stop-color="#7C6EFA"/><stop offset="1" stop-color="#4FACFE"/></linearGradient></defs></svg>
+            </div>
+            <h3>Upload & Share Your Notes</h3>
+            <p>Contribute to the community by uploading your own handwritten or typed notes. Tag them by subject, grade, and chapter so other students can find exactly what they need. Earn reputation points every time someone downloads your notes.</p>
+            <a href="#" class="feat-link" onclick="showPage('notes')">Upload Notes →</a>
+          </div>
+          <div class="large-feat-visual">
+            <div class="lf-ring r1"></div>
+            <div class="lf-ring r2"></div>
+            <div class="lf-ring r3"></div>
+            <div class="lf-center">📄</div>
+          </div>
+        </div>
+      </div>
+      <div class="feat-card feat-card-link reveal" style="--delay:0.5s" onclick="showPage('quiz')" role="link" tabindex="0">
+        <div class="feat-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 6a4 4 0 010 8M14 14v4M14 20v2" stroke="url(#fg6)" stroke-width="1.5" stroke-linecap="round"/><circle cx="14" cy="14" r="11" stroke="url(#fg6)" stroke-width="1.5"/><defs><linearGradient id="fg6" x1="4" y1="4" x2="24" y2="24"><stop stop-color="#7C6EFA"/><stop offset="1" stop-color="#4FACFE"/></linearGradient></defs></svg>
+        </div>
+        <h3>Quiz Yourself</h3>
+        <p>Test your knowledge with auto-generated quizzes based on the notes library. Track your scores, see performance graphs and improve over time.</p>
+        <a href="#" class="feat-link" onclick="showPage('quiz')">Take a Quiz →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about section" id="about">
+  <div class="container about-grid">
+    <div class="about-text reveal">
+      <span class="section-tag">OUR STORY</span>
+      <h2 class="section-title">Built by students,<br/><span class="title-gradient">for students</span></h2>
+      <p>EduLearn was born from a simple frustration — great study resources were scattered everywhere, and students wasted hours just trying to find good notes and videos instead of actually studying.</p>
+      <p style="margin-top:16px; color:var(--text3)">We built one platform that brings the best notes, top YouTube lessons, and proven study techniques like the Pomodoro method together, so every student can focus on what matters: learning.</p>
+      <div class="about-btns">
+        <a href="#" class="btn-primary" onclick="openRegisterModal(event)">JOIN FOR FREE TODAY</a>
+        <a href="#" class="btn-outline" onclick="showPage('home');scrollToSection('features')">SEE FEATURES</a>
+      </div>
+    </div>
+    <div class="about-visual reveal">
+      <div class="about-globe">
+        <canvas id="globeCanvas" width="400" height="400"></canvas>
+      </div>
+      <div class="about-stats-grid">
+        <div class="about-stat"><span class="as-num">50K+</span><span class="as-lbl">Active students</span></div>
+        <div class="about-stat"><span class="as-num">12K</span><span class="as-lbl">Notes uploaded</span></div>
+        <div class="about-stat"><span class="as-num">300+</span><span class="as-lbl">Video lessons</span></div>
+        <div class="about-stat"><span class="as-num">98%</span><span class="as-lbl">Pass rate</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES / HOW IT WORKS -->
+<section class="values section">
+  <div class="container values-grid">
+    <div class="values-img reveal">
+      <div class="val-img-wrap">
+        <div class="val-img-placeholder">
+          <div class="people-collage">
+            <div class="person p1"></div>
+            <div class="person p2"></div>
+            <div class="person p3"></div>
+          </div>
+        </div>
+        <div class="val-float-card">
+          <span class="vf-icon">🏆</span>
+          <div>
+            <div class="vf-title">4.9 / 5.0</div>
+            <div class="vf-sub">50K+ reviews</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="values-text reveal">
+      <span class="section-tag">HOW IT WORKS</span>
+      <h2 class="section-title">Three steps to <span class="title-gradient">ace your exams</span></h2>
+      <p>EduLearn is designed to fit into your study routine naturally — no complicated setup, just open and start learning.</p>
+      <div class="values-list">
+        <div class="val-item">
+          <div class="val-num">01</div>
+          <div><h4>Browse & Download Notes</h4><p>Search by subject, grade or chapter. Download PDF notes from top students or upload your own to help others.</p></div>
+        </div>
+        <div class="val-item">
+          <div class="val-num">02</div>
+          <div><h4>Watch Curated Video Lessons</h4><p>Pick a subject and instantly access handpicked YouTube lessons from the best teachers, organized by topic.</p></div>
+        </div>
+        <div class="val-item">
+          <div class="val-num">03</div>
+          <div><h4>Focus with the Pomodoro Timer</h4><p>Start a study session with our built-in timer. 25 min focus + 5 min break cycles proven to maximize retention.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing section" id="pricing">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">PRICING</span>
+      <h2 class="section-title">Simple plans,<br/><span class="title-gradient">made for students</span></h2>
+      <p class="section-desc">Start free forever. Upgrade only if you need more. No credit card required.</p>
+    </div>
+    <div class="pricing-toggle reveal">
+      <span class="ptog active" data-plan="monthly">Monthly</span>
+      <span class="ptog" data-plan="annual">Annual <span class="save-badge">Save 20%</span></span>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card reveal" style="--delay:0s">
+        <div class="pc-tier">Free</div>
+        <div class="pc-price"><span class="pc-amt" data-monthly="₹0" data-annual="₹0">₹0</span><span class="pc-per">/mo</span></div>
+        <p class="pc-desc">Perfect for students just getting started with structured studying.</p>
+        <ul class="pc-features">
+          <li>✓ Browse all shared notes</li>
+          <li>✓ Upload up to 5 notes/month</li>
+          <li>✓ Limited quiz access</li>
+          <li>✓ Watch video lessons</li>
+          <li class="muted">✗ Offline PDF downloads</li>        
+          <li class="muted">✗ Track progress and streak</li>
+          <li class="muted">✗ Ad-free experience</li>
+        </ul>
+        <a href="#" class="btn-outline pc-btn" onclick="openRegisterModal(event)">GET STARTED FREE</a>
+      </div>
+      <div class="price-card featured reveal" style="--delay:0.1s">
+        <div class="pc-popular">MOST POPULAR</div>
+        <div class="pc-tier">Student Pro</div>
+        <div class="pc-price"><span class="pc-amt" data-monthly="₹20" data-annual="₹192">₹20</span><span class="pc-per">/mo</span></div>
+        <p class="pc-desc">For serious students who want the full EduLearn experience.</p>
+        <ul class="pc-features">
+          <li>✓ Unlimited access to all notes</li>
+          <li>✓ Offline PDF downloads</li>
+          <li>✓ Watch video lessons</li>
+          <li>✓ Access to all quizzes</li>
+          <li>✓ Track progress and streak</li>
+          <li>✓ Access to all Team/group features</li>
+          <li>✓ Ad-free experience</li>
+        </ul>
+        <a href="#" class="btn-primary pc-btn" onclick="openRegisterModal(event)">START PRO</a>
+      </div>
+      <div class="price-card reveal" style="--delay:0.2s">
+        <div class="pc-tier">Study Group</div>
+        <div class="pc-price"><span class="pc-amt" data-monthly="₹15" data-annual="₹144">₹15</span><span class="pc-per">/mo</span></div>
+        <p class="pc-desc">For tuition centres, study groups and classroom use.</p>
+        <ul class="pc-features">
+          <li>✓ Unlimited access to all notes</li>
+          <li>✓ Offline PDF downloads</li>
+          <li>✓ Watch video lessons</li>
+          <li>✓ Private group notes</li>
+          <li>✓ Group quizzes</li>
+          <li>✓ Group progress tracking</li>
+          <li>✓ Ad-free experience</li>
+        </ul>
+        <a href="#" class="btn-outline pc-btn" onclick="openRegisterModal(event)">START GROUP</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS (replacing team) -->
+<section class="team section" id="team">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">STUDENT STORIES</span>
+      <h2 class="section-title">What students <span class="title-gradient">are saying</span></h2>
+      <p class="section-desc">Real reviews from students who used EduLearn to prepare for their exams.</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card reveal" style="--delay:0s">
+        <div class="tc-img">
+          <div class="tc-avatar" style="background:linear-gradient(135deg,#1a1a2e,#16213e)">
+            <div class="av-face av1"></div>
+          </div>
+        </div>
+        <div class="tc-info">
+          <h3>Aryan Mehta</h3>
+          <span>JEE Advanced — AIR 142</span>
+        </div>
+        <p style="font-size:13px;color:var(--text2);padding:0 16px 16px;line-height:1.6">"The notes library saved me hundreds of hours. I found chapter-wise Physics notes better than any book I'd bought."</p>
+      </div>
+      <div class="team-card reveal" style="--delay:0.1s">
+        <div class="tc-img">
+          <div class="tc-avatar" style="background:linear-gradient(135deg,#2d1b4e,#1a0533)">
+            <div class="av-face av2"></div>
+          </div>
+        </div>
+        <div class="tc-info">
+          <h3>Priya Sharma</h3>
+          <span>NEET — 680 / 720</span>
+        </div>
+        <p style="font-size:13px;color:var(--text2);padding:0 16px 16px;line-height:1.6">"The Pomodoro timer completely changed how I study. I went from 3 hours of distracted studying to 6 hours of deep focus."</p>
+      </div>
+      <div class="team-card reveal" style="--delay:0.2s">
+        <div class="tc-img">
+          <div class="tc-avatar" style="background:linear-gradient(135deg,#0a2744,#051626)">
+            <div class="av-face av3"></div>
+          </div>
+        </div>
+        <div class="tc-info">
+          <h3>Karan Singh</h3>
+          <span>Class 12 — 96% in Boards</span>
+        </div>
+        <p style="font-size:13px;color:var(--text2);padding:0 16px 16px;line-height:1.6">"The video hub is incredible. Every topic I searched had multiple great videos sorted by quality. Like a personal tutor."</p>
+      </div>
+      <div class="team-card reveal" style="--delay:0.3s">
+        <div class="tc-img">
+          <div class="tc-avatar" style="background:linear-gradient(135deg,#1a2f1a,#0d1f0d)">
+            <div class="av-face av4"></div>
+          </div>
+        </div>
+        <div class="tc-info">
+          <h3>Sneha Rao</h3>
+          <span>UPSC Aspirant</span>
+        </div>
+        <p style="font-size:13px;color:var(--text2);padding:0 16px 16px;line-height:1.6">"I uploaded my GS notes and hundreds of students downloaded them. Earning while studying — that's EduLearn for you."</p>
+      </div>
+    </div>
+    <div class="team-cta reveal">
+      <div class="team-cta-card">
+        <h3>Join 50,000+ students already studying smarter</h3>
+        <p>Whether you're preparing for JEE, NEET, Boards, or university exams — EduLearn has the notes, videos, and tools you need. Start free today, no credit card required.</p>
+        <div class="team-cta-btns">
+          <a href="#" class="btn-primary" onclick="showPage('home');scrollToSection('pricing')">JOIN FOR FREE NOW</a>
+          <a href="#" class="btn-outline" onclick="showPage('notes')">BROWSE NOTES</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG / STUDY TIPS -->
+<section class="blog section" id="blog">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">STUDY TIPS</span>
+      <h2 class="section-title">Tips to study<br/><span class="title-gradient">more effectively</span></h2>
+    </div>
+    <div class="blog-grid">
+      <article class="blog-card reveal featured-post" style="--delay:0s">
+        <div class="bc-visual large-visual"><div class="bc-gradient"></div><span class="bc-tag">TECHNIQUE</span></div>
+        <div class="bc-body">
+          <div class="bc-meta"><span>Mar 1, 2026</span><span>·</span><span>6 min read</span></div>
+          <h3>Why the Pomodoro Technique Works for Every Student</h3>
+          <p>Science-backed reasons why 25-minute focused sprints outperform marathon study sessions — and how to get the most out of each Pomodoro block.</p>
+          <a href="#" class="feat-link" onclick="showPage('pomodoro')">Try the Timer →</a>
+        </div>
+      </article>
+      <article class="blog-card reveal" style="--delay:0.1s">
+        <div class="bc-visual small-visual v2"><div class="bc-gradient"></div><span class="bc-tag">NOTES</span></div>
+        <div class="bc-body">
+          <div class="bc-meta"><span>Feb 24, 2026</span><span>·</span><span>4 min read</span></div>
+          <h3>How to Take Notes That You'll Actually Use During Revision</h3>
+          <p>The Cornell method, mind maps, and why less is more when it comes to effective note-taking for exams.</p>
+          <a href="#" class="feat-link">Read →</a>
+        </div>
+      </article>
+      <article class="blog-card reveal" style="--delay:0.2s">
+        <div class="bc-visual small-visual v3"><div class="bc-gradient"></div><span class="bc-tag">VIDEOS</span></div>
+        <div class="bc-body">
+          <div class="bc-meta"><span>Feb 15, 2026</span><span>·</span><span>5 min read</span></div>
+          <h3>Top YouTube Channels for JEE, NEET and Board Exam Prep</h3>
+          <p>We reviewed 100+ channels so you don't have to. Here are the best free resources for every subject and grade.</p>
+          <a href="#" class="feat-link" onclick="showPage('videos')">Watch Now →</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact section" id="contact">
+  <div class="container contact-grid">
+    <div class="contact-info reveal">
+      <span class="section-tag">GET IN TOUCH</span>
+      <h2 class="section-title">We're here to <span class="title-gradient">help you</span></h2>
+      <p>Have questions about EduLearn? Want to report a bug, suggest a feature, or partner with us? We read every message.</p>
+      <div class="contact-items">
+        <div class="ci">
+          <div class="ci-icon">✉</div>
+          <div>
+            <div class="ci-label">Student Support</div>
+            <div class="ci-val">Questions about notes, videos, or your account</div>
+            <a href="/cdn-cgi/l/email-protection#e189848d8d8ea18485948d8480938fcf809191" class="ci-link"><span class="__cf_email__" data-cfemail="d9919c959596999c9d8c959c988b97f7988989">[email&#160;protected]</span> ↗</a>
+          </div>
+        </div>
+        <div class="ci">
+          <div class="ci-icon">🤝</div>
+          <div>
+            <div class="ci-label">Partnerships & Schools</div>
+            <div class="ci-val">Bring EduLearn to your school or coaching centre</div>
+            <a href="/cdn-cgi/l/email-protection#1969786b6d777c6b6a597c7d6c757c786b7737786969" class="ci-link"><span class="__cf_email__" data-cfemail="b4e4f5e6e0faf1e6e7f4f1f0e1f8f1f5e6fa9af5e4e4">[email&#160;protected]</span> ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form reveal">
+      <div class="cf-wrap">
+        <div class="form-group"><label>Full name</label><input type="text" class="cf-input" placeholder="Your name"/></div>
+        <div class="form-group"><label>Email address</label><input type="email" class="cf-input" placeholder="you@email.com"/></div>
+        <div class="form-group"><label>Subject</label><input type="text" class="cf-input" placeholder="How can we help?"/></div>
+        <div class="form-group"><label>Message</label><textarea class="cf-input" rows="4" placeholder="Tell us more..."></textarea></div>
+        <button class="btn-primary full-w" id="sendBtn">SEND MESSAGE</button>
+        <div class="cf-success hidden" id="cfSuccess">✅ Message sent! We'll reply within 24 hours.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo footer-logo" onclick="showPage('home')">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <path d="M4 14L14 4L24 14L14 24L4 14Z" fill="url(#fLogoGrad)" opacity="0.9"/>
+            <path d="M9 14L14 9L19 14L14 19L9 14Z" fill="#fff"/>
+            <defs><linearGradient id="fLogoGrad" x1="4" y1="4" x2="24" y2="24"><stop stop-color="#7C6EFA"/><stop offset="1" stop-color="#4FACFE"/></linearGradient></defs>
+          </svg>
+          <span>EduLearn</span>
+        </a>
+        <p>The smart study platform for students everywhere. Notes, videos, and focus tools — all in one place.</p>
+        <div class="footer-social">
+          <a href="#" class="fs-link">𝕏</a><a href="#" class="fs-link">in</a>
+          <a href="#" class="fs-link">f</a><a href="#" class="fs-link">▶</a>
+        </div>
+      </div>
+      <div class="footer-cols">
+        <div class="fc">
+          <h4>Platform</h4>
+          <a href="#" onclick="showPage('notes')">Notes Library</a>
+          <a href="#" onclick="showPage('videos')">Video Lessons</a>
+          <a href="#" onclick="showPage('pomodoro')">Focus Timer</a>
+          <a href="#" onclick="showPage('home');scrollToSection('features')">All Features</a>
+        </div>
+        <div class="fc">
+          <h4>Subjects</h4>
+          <a href="#">Mathematics</a><a href="#">Physics</a>
+          <a href="#">Chemistry</a><a href="#">Biology</a>
+        </div>
+        <div class="fc">
+          <h4>Resources</h4>
+          <a href="#">Study Tips Blog</a><a href="#">Exam Guides</a>
+          <a href="#">Community Forum</a><a href="#">Help Center</a>
+        </div>
+        <div class="fc">
+          <h4>Legal</h4>
+          <a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 EduLearn. All rights reserved.</span>
+      <span>Made with ❤️ for students everywhere</span>
+    </div>
+  </div>
+</footer>
+</div><!-- end page-home -->
+
+
+<!-- ====================================================
+     PAGE: NOTES LIBRARY
+===================================================== -->
+<div id="page-notes" class="page-wrapper">
+  <div class="inner-page">
+    <div class="inner-header">
+      <div>
+        <span class="section-tag">COMMUNITY</span>
+        <h1 class="inner-title">📄 Notes <span class="title-gradient">Library</span></h1>
+        <p class="inner-sub">Browse notes shared by students. Filter by subject, grade or chapter.</p>
+      </div>
+      <button class="btn-primary" id="uploadNoteBtn">+ Upload Your Notes</button>
+    </div>
+
+    <div class="notes-layout">
+      <!-- Sidebar filters -->
+      <aside class="notes-sidebar">
+        <div class="filter-group">
+          <label class="filter-label">Grade</label>
+          <div class="grade-pills" id="gradePills">
+            <button class="gpill active" data-grade="all">All</button>
+            <button class="gpill" data-grade="9">Grade 9</button>
+            <button class="gpill" data-grade="10">Grade 10</button>
+            <button class="gpill" data-grade="11">Grade 11</button>
+            <button class="gpill" data-grade="12">Grade 12</button>
+          </div>
+        </div>
+        <div class="filter-group">
+          <label class="filter-label">Subject</label>
+          <div class="subject-filters" id="subjectFilters">
+            <button class="sfilt active" data-subj="all">All Subjects</button>
+            <button class="sfilt" data-subj="Math">📐 Mathematics</button>
+            <button class="sfilt" data-subj="Physics">🔬 Physics</button>
+            <button class="sfilt" data-subj="Chemistry">🧪 Chemistry</button>
+            <button class="sfilt" data-subj="Biology">🧬 Biology</button>
+            <button class="sfilt" data-subj="English">📚 English</button>
+            <button class="sfilt" data-subj="History">📜 History</button>
+            <button class="sfilt" data-subj="CS">💻 Computer Sci.</button>
+          </div>
+        </div>
+        <div class="filter-group">
+          <label class="filter-label">Sort By</label>
+          <select class="filter-select" id="noteSort">
+            <option value="recent">Most Recent</option>
+            <option value="popular">Most Downloaded</option>
+            <option value="rating">Highest Rated</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label class="filter-label">Search</label>
+          <input type="text" id="noteSearch" class="cf-input" placeholder="Topic, chapter..."/>
+        </div>
+      </aside>
+
+      <!-- Notes grid -->
+      <div class="notes-main-area">
+        <div class="notes-count" id="notesCount"></div>
+        <div class="notes-grid" id="notesGrid"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Upload Modal -->
+  <div class="modal-overlay hidden" id="uploadModal">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h3>📤 Upload Your Notes</h3>
+        <button class="modal-close" id="closeModal">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="dropzone" id="dropzone">
+          <div style="font-size:40px;margin-bottom:10px">📁</div>
+          <p>Drag & drop your file here</p>
+          <p style="font-size:13px;color:var(--text3);margin-top:4px">or <span class="feat-link" id="browseFile">browse files</span></p>
+          <input type="file" id="fileInput" hidden accept=".pdf,.jpg,.png,.docx"/>
+          <p style="font-size:11px;color:var(--text3);margin-top:12px">PDF, JPG, PNG, DOCX — max 20MB</p>
+          <div id="selectedFile" style="display:none;margin-top:10px;font-size:13px;color:var(--accent)"></div>
+        </div>
+        <div class="form-row-2">
+          <div class="form-group"><label>Note Title *</label><input type="text" class="cf-input" id="uploadTitle" placeholder="e.g. Newton's Laws — Chapter 5"/></div>
+          <div class="form-group"><label>Subject *</label>
+            <select class="cf-input" id="uploadSubject">
+              <option value="">Select subject</option>
+              <option>Math</option><option>Physics</option><option>Chemistry</option>
+              <option>Biology</option><option>English</option><option>History</option><option>CS</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row-2">
+          <div class="form-group"><label>Grade *</label>
+            <select class="cf-input" id="uploadGrade">
+              <option value="">Select grade</option>
+              <option>9</option><option>10</option><option>11</option><option>12</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Chapter / Topic</label><input type="text" class="cf-input" id="uploadChapter" placeholder="e.g. Thermodynamics"/></div>
+        </div>
+        <div class="form-group"><label>Description</label><textarea class="cf-input" id="uploadDesc" rows="2" placeholder="What's in these notes?"></textarea></div>
+        <div class="upload-progress hidden" id="uploadProg">
+          <div class="prog-track"><div class="prog-fill" id="progFill"></div></div>
+          <p id="progText" style="font-size:13px;color:var(--text2);margin-top:6px;text-align:center">Uploading...</p>
+        </div>
+        <div class="upload-ok hidden" id="uploadOk">✅ Notes uploaded successfully! Thank you for contributing.</div>
+      </div>
+      <div class="modal-foot">
+        <button class="btn-outline" id="cancelUpload">Cancel</button>
+        <button class="btn-primary" id="submitUpload">Upload Notes</button>
+      </div>
+    </div>
+  </div>
+</div><!-- end page-notes -->
+
+
+<!-- ====================================================
+     PAGE: VIDEO LEARNING HUB
+===================================================== -->
+<div id="page-videos" class="page-wrapper">
+  <div class="inner-page">
+    <div class="inner-header">
+      <div>
+        <span class="section-tag">LEARN</span>
+        <h1 class="inner-title">🎬 Video <span class="title-gradient">Lectures</span></h1>
+        <p class="inner-sub">Search any topic and watch the best YouTube lessons — curated for students.</p>
+      </div>
+    </div>
+
+    <div class="videos-layout">
+      <!-- Subject / Chapter Sidebar -->
+      <aside class="video-sidebar">
+        <input type="text" class="cf-input" id="videoTopicSearch" placeholder="🔍 Search topics..."/>
+        <div class="video-tree" id="videoTree"></div>
+      </aside>
+
+      <!-- Main player area -->
+      <div class="video-main">
+        <div class="video-search-bar">
+          <input type="text" id="videoCustomSearch" class="cf-input" placeholder="Search any topic on YouTube (e.g. 'Quadratic equations')"/>
+          <button class="btn-primary" id="videoSearchBtn">Search</button>
+        </div>
+        <div id="videoPlayerWrap" class="video-player-wrap">
+          <div class="video-placeholder" id="videoPlaceholder">
+            <div style="font-size:64px;margin-bottom:16px">🎬</div>
+            <h3>Select a topic from the sidebar</h3>
+            <p style="color:var(--text3);font-size:14px;margin-top:8px">or search any topic above to watch lessons</p>
+          </div>
+          <div id="videoEmbed" class="hidden"></div>
+        </div>
+        <div id="videoMeta" class="video-meta hidden">
+          <h3 id="videoTitle" class="video-title"></h3>
+          <p id="videoChannel" class="video-channel"></p>
+        </div>
+
+        <!-- Quick topic cards -->
+        <div id="quickTopics" class="quick-topics">
+          <h4 class="qt-heading">⚡ Popular topics</h4>
+          <div class="qt-grid" id="qtGrid"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- end page-videos -->
+
+
+<!-- ====================================================
+     PAGE: POMODORO TIMER
+===================================================== -->
+<div id="page-pomodoro" class="page-wrapper">
+  <div class="inner-page pomodoro-page">
+    <div class="inner-header center-header">
+      <span class="section-tag">FOCUS</span>
+      <h1 class="inner-title">⏱ Pomodoro <span class="title-gradient">Focus Timer</span></h1>
+      <p class="inner-sub">25 minutes focus → 5 minute break. Beat procrastination one session at a time.</p>
+    </div>
+
+    <div class="pomo-layout">
+      <!-- Timer block -->
+      <div class="pomo-main">
+        <div class="pomo-mode-tabs" id="pomoModeTabs">
+          <button class="pmode active" data-mode="focus" data-mins="25">🎯 Focus</button>
+          <button class="pmode" data-mode="short" data-mins="5">☕ Short Break</button>
+          <button class="pmode" data-mode="long" data-mins="15">🌿 Long Break</button>
+        </div>
+
+        <div class="pomo-ring-wrap">
+          <svg class="pomo-ring" viewBox="0 0 300 300">
+            <circle class="pring-bg" cx="150" cy="150" r="130"/>
+            <circle class="pring-fg" id="pomoRing" cx="150" cy="150" r="130"
+              stroke-dasharray="816.8" stroke-dashoffset="0"/>
+          </svg>
+          <div class="pomo-center">
+            <div class="pomo-time" id="pomoTime">25:00</div>
+            <div class="pomo-label" id="pomoLabel">Focus Session</div>
+            <div class="pomo-session" id="pomoSession">Session 1</div>
+          </div>
+        </div>
+
+        <div class="pomo-controls">
+          <button class="pctrl-btn secondary" id="pomoReset" title="Reset">↺</button>
+          <button class="pctrl-btn primary" id="pomoStart">▶</button>
+          <button class="pctrl-btn secondary" id="pomoSkip" title="Skip">⏭</button>
+        </div>
+
+        <div class="pomo-session-dots" id="pomoSessionDots">
+          <span class="pdot active"></span>
+          <span class="pdot"></span>
+          <span class="pdot"></span>
+          <span class="pdot"></span>
+        </div>
+        <p style="font-size:13px;color:var(--text3);text-align:center">Complete 4 sessions for a long break 🏅</p>
+      </div>
+
+      <!-- Settings + Stats -->
+      <div class="pomo-side">
+        <div class="pomo-card">
+          <h4 class="pomo-card-title">⚙️ Settings</h4>
+          <div class="psetting">
+            <label>Focus time: <strong id="focusVal">25</strong> min</label>
+            <input type="range" min="5" max="60" value="25" id="focusSlider" class="pomo-slider"/>
+          </div>
+          <div class="psetting">
+            <label>Short break: <strong id="shortVal">5</strong> min</label>
+            <input type="range" min="1" max="15" value="5" id="shortSlider" class="pomo-slider"/>
+          </div>
+          <div class="psetting">
+            <label>Long break: <strong id="longVal">15</strong> min</label>
+            <input type="range" min="5" max="30" value="15" id="longSlider" class="pomo-slider"/>
+          </div>
+        </div>
+
+        <div class="pomo-card">
+          <h4 class="pomo-card-title">📊 Today's Stats</h4>
+          <div class="pomo-stat-row"><span>✅ Sessions done</span><span id="sessCount">0</span></div>
+          <div class="pomo-stat-row"><span>⏱ Total focus time</span><span id="totalTime">0 min</span></div>
+          <div class="pomo-stat-row"><span>🔥 Streak</span><span id="streakCount">0 days</span></div>
+          <div class="today-bar-wrap" id="todayBars"></div>
+        </div>
+
+   
+        <div class="pomo-card">
+          <h4 class="pomo-card-title">💡 Pomodoro Tips</h4>
+          <div id="pomoTip" class="pomo-tip"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- end page-pomodoro -->
+
+<!-- ====================================================
+     PAGE: STREAK DASHBOARD
+===================================================== -->
+<div id="page-streak" class="page-wrapper">
+  <div class="inner-page">
+    <div class="inner-header">
+      <div>
+        <span class="section-tag">CONSISTENCY</span>
+        <h1 class="inner-title">🔥 Study <span class="title-gradient">Streak Dashboard</span></h1>
+        <p class="inner-sub">Track your daily study habits and build unstoppable momentum.</p>
+      </div>
+    </div>
+
+    <!-- Top stats row -->
+    <div class="streak-stats-row" id="streakStatsRow"></div>
+
+    <!-- Weekly ring + days -->
+    <div class="streak-week-card">
+      <div class="swc-left">
+        <div class="swc-ring-wrap">
+          <svg class="swc-ring" viewBox="0 0 120 120">
+            <circle class="swc-ring-bg" cx="60" cy="60" r="50"/>
+            <circle class="swc-ring-fg" id="weekRingFg" cx="60" cy="60" r="50" stroke-dasharray="314" stroke-dashoffset="314"/>
+          </svg>
+          <div class="swc-ring-center">
+            <span class="swc-ring-num" id="weekDaysNum">0</span>
+            <span class="swc-ring-lbl">/ 7 days</span>
+          </div>
+        </div>
+        <div class="swc-meta">
+          <div class="swc-streak-big"><span id="currentStreakNum">0</span><span class="swc-fire">🔥</span></div>
+          <div class="swc-streak-label">Current streak</div>
+        </div>
+      </div>
+      <div class="swc-right">
+        <div class="week-days-row" id="weekDaysRow"></div>
+        <div class="swc-legend">
+          <span class="swc-legend-item"><span class="swc-dot past"></span>Past</span>
+          <span class="swc-legend-item"><span class="swc-dot today"></span>Today</span>
+          <span class="swc-legend-item"><span class="swc-dot studied"></span>Studied</span>
+          <span class="swc-legend-item"><span class="swc-dot missed"></span>Missed</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- GitHub-style heatmap -->
+    <div class="streak-heatmap-card">
+      <div class="shc-header">
+        <h3 class="shc-title">📅 Year Activity Heatmap</h3>
+        <div class="shc-legend">
+          <span style="font-size:12px;color:var(--text3)">Less</span>
+          <span class="hm-swatch s0"></span>
+          <span class="hm-swatch s1"></span>
+          <span class="hm-swatch s2"></span>
+          <span class="hm-swatch s3"></span>
+          <span class="hm-swatch s4"></span>
+          <span style="font-size:12px;color:var(--text3)">More</span>
+        </div>
+      </div>
+      <div class="heatmap-scroll">
+        <div class="heatmap-wrap" id="heatmapWrap"></div>
+      </div>
+    </div>
+
+    <!-- Bottom analytics row -->
+    <div class="streak-bottom-row">
+      <!-- Study hours bar chart -->
+      <div class="streak-card">
+        <h4 class="sk-title">📊 Daily Study Hours (This Week)</h4>
+        <div class="study-bars" id="studyBars"></div>
+      </div>
+      <!-- Subject breakdown -->
+      <div class="streak-card">
+        <h4 class="sk-title">📚 Subject Focus This Month</h4>
+        <div class="subject-donut-wrap">
+          <canvas id="subjectDonut" width="160" height="160"></canvas>
+          <div class="donut-legend" id="donutLegend"></div>
+        </div>
+      </div>
+      <!-- Badges -->
+      <div class="streak-card">
+        <h4 class="sk-title">🏅 Earned Badges</h4>
+        <div class="badges-grid" id="badgesGrid"></div>
+      </div>
+    </div>
+  </div>
+</div><!-- end page-streak -->
+
+<!-- ====================================================
+     PAGE: QUIZ
+===================================================== -->
+<div id="page-quiz" class="page-wrapper">
+  <div class="inner-page">
+
+    <!-- Quiz Home Screen -->
+    <div id="quizHome">
+      <div class="inner-header">
+        <div>
+          <span class="section-tag">TEST YOURSELF</span>
+          <h1 class="inner-title">🧠 Quiz <span class="title-gradient">Centre</span></h1>
+          <p class="inner-sub">Auto-generated quizzes from the notes library. Pick a subject and start!</p>
+        </div>
+      </div>
+
+      <!-- Performance dashboard -->
+      <div class="quiz-perf-grid" id="quizPerfGrid"></div>
+
+      <!-- Charts row -->
+      <div class="quiz-charts-row">
+        <div class="quiz-chart-card">
+          <h4 class="sk-title">📈 Score Trend (Last 10 Quizzes)</h4>
+          <div class="score-trend-wrap">
+            <svg id="scoreTrendSvg" width="100%" height="160" viewBox="0 0 500 160" preserveAspectRatio="none"></svg>
+          </div>
+        </div>
+        <div class="quiz-chart-card">
+          <h4 class="sk-title">📊 Accuracy by Subject</h4>
+          <div class="accuracy-bars" id="accuracyBars"></div>
+        </div>
+      </div>
+
+      <!-- Quiz selector -->
+      <div class="quiz-selector-section">
+        <h3 class="qs-heading">Choose a Quiz</h3>
+        <div class="quiz-search-filter">
+          <input type="text" id="quizSearch" class="cf-input" placeholder="🔍 Search quizzes by title or subject..."/>
+          <div class="quiz-filter-pills" id="quizFilterPills">
+            <button class="qfpill active" data-filter="all">All</button>
+            <button class="qfpill" data-filter="Physics">Physics</button>
+            <button class="qfpill" data-filter="Math">Math</button>
+            <button class="qfpill" data-filter="Chemistry">Chemistry</button>
+            <button class="qfpill" data-filter="Biology">Biology</button>
+            <button class="qfpill" data-filter="CS">CS</button>
+          </div>
+        </div>
+        <div class="quiz-cards-grid" id="quizCardsGrid"></div>
+      </div>
+    </div>
+
+    <!-- Active Quiz Screen -->
+    <div id="quizActive" class="hidden">
+      <div class="quiz-active-wrap">
+        <div class="qa-header">
+          <button class="qa-back" onclick="exitQuiz()">← Back</button>
+          <div class="qa-info">
+            <span id="qaSubject" class="section-tag"></span>
+            <span id="qaProgress" style="font-size:13px;color:var(--text2)"></span>
+          </div>
+          <div class="qa-timer-wrap">⏱ <span id="qaTimer">00:00</span></div>
+        </div>
+        <div class="qa-progress-bar"><div class="qa-progress-fill" id="qaProgressFill"></div></div>
+        <div class="qa-question-card" id="qaQuestionCard">
+          <div class="qa-q-num" id="qaQNum"></div>
+          <div class="qa-q-text" id="qaQText"></div>
+          <div class="qa-options" id="qaOptions"></div>
+        </div>
+        <div class="qa-nav">
+          <button class="btn-outline" id="qaPrev" onclick="quizNav(-1)">← Prev</button>
+          <button class="btn-primary" id="qaNext" onclick="quizNav(1)">Next →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quiz Result Screen -->
+    <div id="quizResult" class="hidden">
+      <div class="qr-wrap">
+        <div class="qr-score-circle">
+          <svg viewBox="0 0 120 120" class="qr-ring">
+            <circle class="qr-ring-bg" cx="60" cy="60" r="50"/>
+            <circle class="qr-ring-fg" id="qrRingFg" cx="60" cy="60" r="50" stroke-dasharray="314" stroke-dashoffset="314"/>
+          </svg>
+          <div class="qr-score-inner">
+            <span id="qrPercent">0%</span>
+            <span id="qrGrade">—</span>
+          </div>
+        </div>
+        <h2 id="qrTitle" class="qr-title"></h2>
+        <div class="qr-breakdown" id="qrBreakdown"></div>
+        <div class="qr-actions">
+          <button class="btn-primary" onclick="retryQuiz()">Try Again</button>
+          <button class="btn-outline" onclick="exitQuiz()">Back to Quizzes</button>
+        </div>
+        <div class="qr-review" id="qrReview"></div>
+      </div>
+    </div>
+  </div>
+</div><!-- end page-quiz -->
+
+<!-- REGISTER MODAL -->
+<div class="modal-overlay hidden" id="registerModal">
+  <div class="modal-box" style="max-width:460px">
+    <div class="modal-head">
+      <div>
+        <h3>🎓 Create your account</h3>
+        <p style="font-size:13px;color:var(--text2);margin-top:3px">Free forever. No credit card needed.</p>
+      </div>
+      <button class="modal-close" id="closeRegister">✕</button>
+    </div>
+    <div class="modal-body" id="registerBody">
+      <div class="reg-tabs">
+        <button class="reg-tab active" data-tab="register">Sign Up</button>
+        <button class="reg-tab" data-tab="login">Log In</button>
+      </div>
+      <div id="tab-register">
+        <div class="form-group"><label>Full Name</label><input type="text" class="cf-input" id="regName" placeholder="Your full name"/></div>
+        <div class="form-group"><label>Email Address</label><input type="email" class="cf-input" id="regEmail" placeholder="you@email.com"/></div>
+        <div class="form-group"><label>Password</label><input type="password" class="cf-input" id="regPass" placeholder="Min. 8 characters"/></div>
+        <div class="password-strength" id="passStrength" style="display:none">
+          <div class="ps-segments">
+            <div class="ps-seg" id="psSeg1"></div>
+            <div class="ps-seg" id="psSeg2"></div>
+            <div class="ps-seg" id="psSeg3"></div>
+            <div class="ps-seg" id="psSeg4"></div>
+          </div>
+          <span class="ps-label" id="psLabel"></span>
+        </div>
+        <div class="reg-terms">
+          <input type="checkbox" id="regTerms"/>
+          <label for="regTerms" style="font-size:12px;color:var(--text2);cursor:pointer">I agree to the <span style="color:var(--accent)">Terms of Service</span> and <span style="color:var(--accent)">Privacy Policy</span></label>
+        </div>
+        <button class="btn-primary full-w" id="regSubmit" style="margin-top:8px">CREATE FREE ACCOUNT</button>
+        <div class="reg-divider"><span>or continue with</span></div>
+        <div class="reg-oauth">
+          <button class="oauth-btn" onclick="alert('Google sign-in coming soon!')">
+            <svg width="18" height="18" viewBox="0 0 18 18"><path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z" fill="#4285F4"/><path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 009 18z" fill="#34A853"/><path d="M3.964 10.71A5.41 5.41 0 013.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 000 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/><path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 00.957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z" fill="#EA4335"/></svg>
+            Google
+          </button>
+          <button class="oauth-btn" onclick="alert('GitHub sign-in coming soon!')"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg> GitHub</button>
+        </div>
+      </div>
+      <div id="tab-login" class="hidden">
+        <div class="form-group"><label>Email Address</label><input type="email" class="cf-input" id="loginEmail" placeholder="you@email.com"/></div>
+        <div class="form-group"><label>Password</label><input type="password" class="cf-input" id="loginPass" placeholder="Your password"/></div>
+        <div class="password-strength" id="loginPassStrength" style="display:none">
+          <div class="ps-segments">
+            <div class="ps-seg" id="lpSeg1"></div>
+            <div class="ps-seg" id="lpSeg2"></div>
+            <div class="ps-seg" id="lpSeg3"></div>
+            <div class="ps-seg" id="lpSeg4"></div>
+          </div>
+          <span class="ps-label" id="lpLabel"></span>
+        </div>
+        <div style="text-align:right;margin-bottom:8px"><a href="#" style="font-size:12px;color:var(--accent)">Forgot password?</a></div>
+        <button class="btn-primary full-w" id="loginSubmit">LOG IN</button>
+        <div class="reg-divider"><span>or continue with</span></div>
+        <div class="reg-oauth">
+          <button class="oauth-btn" onclick="alert('Google sign-in coming soon!')">
+            <svg width="18" height="18" viewBox="0 0 18 18"><path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z" fill="#4285F4"/><path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 009 18z" fill="#34A853"/><path d="M3.964 10.71A5.41 5.41 0 013.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 000 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/><path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 00.957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z" fill="#EA4335"/></svg>
+            Google
+          </button>
+          <button class="oauth-btn" onclick="alert('GitHub sign-in coming soon!')"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg> GitHub</button>
+        </div>
+      </div>
+      <div id="registerSuccess" class="hidden" style="text-align:center;padding:24px 0">
+        <div style="font-size:56px;margin-bottom:14px">&#127881;</div>
+        <h3 style="font-family:var(--font-head);font-size:22px;font-weight:800;margin-bottom:8px">Welcome to EduLearn!</h3>
+        <p style="color:var(--text2);font-size:14px;margin-bottom:20px">Your account is ready. Start exploring notes, videos, and your focus timer!</p>
+        <button class="btn-primary" onclick="closeRegisterModal();showPage('notes')">BROWSE NOTES →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7C6EFA"/>
+      <stop offset="100%" stop-color="#4FACFE"/>
+    </linearGradient>
+    <linearGradient id="qrGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7C6EFA"/>
+      <stop offset="100%" stop-color="#4FACFE"/>
+    </linearGradient>
+  </defs>
+</svg>
+<script src="app.js"></script>
+</body>
+</html>
