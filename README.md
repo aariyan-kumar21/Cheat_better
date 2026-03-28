@@ -23,7 +23,9 @@ EduNotes provides an all-in-one learning platform where students can:
 🎥 Watch video lectures  
 🧠 Take quizzes based on the content
 
+## Screenshots
 
+![App Screenshot](<img width="1919" height="911" alt="Image" src="https://github.com/user-attachments/assets/91f215a6-3e5c-450d-aacf-984d03e3f4a4" />)
 
 
 ## Deployment
